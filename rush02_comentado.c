@@ -53,6 +53,19 @@ t_list *ft_create_nodo(t_list *prev)
 	return (nodo);
 
 }
+//crear un nodo para el dict siguiendo la estructura definida en rush2.h
+t_dict *ft_create_nodo(t_dict *prev)
+{
+        t_dict *nodo;
+
+        nodo = (t_dict *)malloc(sizeof(t_dict) + 1);
+        nodo->key = 0;
+        nodo->value = NULL;
+        nodo->prev = prev;
+        prev->next = nodo;
+        nodo->next = NULL;
+        return (nodo);
+}
 
 t_list *creatematrix(char *str)
 {
