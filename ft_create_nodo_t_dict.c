@@ -6,7 +6,7 @@
 /*   By: irivas-v <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 16:33:45 by irivas-v          #+#    #+#             */
-/*   Updated: 2025/03/08 19:09:18 by irivas-v         ###   ########.fr       */
+/*   Updated: 2025/03/08 19:12:43 by irivas-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_dict *ft_create_nodo(t_dict *prev)
 
         nodo = (t_dict *)malloc(sizeof(t_dict) + 1);
         nodo->key = 0;
-        nodo->value = '0';
+        nodo->value = NULL;
         nodo->prev = prev;
         prev->next = nodo;
         nodo->next = NULL;
