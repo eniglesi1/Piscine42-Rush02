@@ -164,11 +164,33 @@ t_dict	*parse_dict(char *buffer) // ft_strlen (ya esta hecha), "AÑADIR" *ft_str
 		return (NULL); //si la memoria falla, devuelve NULL.
 
 	line = buffer;
-	while (*line && count < 100) //Mientras line 
-	*sep = '\0';
-	key = ft_strdup(line);
-	value = ft_strdup(sep + 1
+	while (*line && count < 100) //Mientras linea no sea NULL y no exceda de 100, sigue. 
+	{
+		char *sep = ft_strchr(line, ':'); //Busca : en la línea
+		if (!sep)
+			return (NULL); //Si no están los dos puntos, no es válido y retorna NULL.
+
+		*sep = '\0';
+		key =  
+	}
+	*sep = '\0'; //cambia los dos números por un \0, separando key de value
+	key = ft_strdup(line); //duplica la parte antes de los dos puntos.
+	value = ft_strdup(sep + 1); //Duplica a parte después de los dos puntos.
 	
+	if (!key || !value)
+            return (NULL); //si key o value son NULL retorna error.
+        
+        dict[count].key = key; //Guarda la clave en "dict"
+        dict[count].value = value; //Guarda el valor en "dict"
+        count++; 
+        
+        line = ft_strchr(sep + 1, '\n'); //Encuentra el final de la línea
+        if (line) //Si hay un salto de línea, pasamos al siguiente caracter
+            line++;
+    }
+    return (dict); //Devuelve el puntero al diccionario.
+}
+
 
 
 int	main(int arg, char **argv)
