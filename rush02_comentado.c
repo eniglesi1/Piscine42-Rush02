@@ -161,6 +161,20 @@ char	*strdup(char *src)
 	dup[i] = '\0';
 	return (dup);
 */
+/*
+int	ft_strchr(char c, charset)
+{
+	int	i;
+	
+	i = 0;
+	while (charset[i] != '0')
+	{
+		if (charset[i] == c)
+			return (1);
+		i ++;
+	}
+	return (0);
+*/
 
 t_dict	*parse_dict(char *buffer) // ft_strlen (ya esta hecha), "AÑADIR" *ft_strdup para duplicar. "AÑADIR" *ft_strchr para buscar un caracter en una cadena.
 {
