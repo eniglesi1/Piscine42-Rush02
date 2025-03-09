@@ -31,6 +31,16 @@ typedef struct s_dict
 	struct s_dict	*prev;
 }	t_dict;
 
-int	ft_strlen(char *str);
+static int	parsenum(char *str)
+int	ft_strlen(const char *s)
+t_dict *ft_create_dir_nodo(t_dict *prev, char *str)
+t_list *ft_create_list_nodo(t_list *prev)
+t_list *creatematrix(char *str)
+char	*ft_find_value(t_dict *dict, int nb, int i)
+int	get_dic_value(t_dict *dict, t_list *list, char **output, int nod_counter)
+void	get_all_list(t_dict *dict, t_list *list, char **output)
+void	liberar(t_list *list)
+int	ft_my_atoi(const char *str)
+t_dict	*read_dict(void)
 
 #endif
