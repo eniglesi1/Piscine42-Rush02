@@ -46,7 +46,7 @@ t_list *ft_create_nodo(t_list *prev)
 	nodo = (t_list *)malloc(sizeof(t_list) + 1);
 	if (!nodo)
   		return (NULL);
-	nodo->cen = 0;// Esto se iguala a 0 para que comience desde el principio?
+	nodo->cen = 0;// Esto se iguala a 0 para que comience desde el principio? --- Sí
 	nodo->dec = 0;
 	nodo->uni = 0;
 	nodo->prev = prev;
@@ -56,6 +56,8 @@ t_list *ft_create_nodo(t_list *prev)
 
 }
 //crear un nodo para el dict siguiendo la estructura definida en rush2.h
+// --- Bastante acertado, he limado un par de detalles para añadirlo
+// --- al código principal. ¡Buen trabajo!
 t_dict *ft_create_nodo(t_dict *prev)
 {
         nodo = (t_dict *)malloc(sizeof(t_dict) + 1);
@@ -68,8 +70,8 @@ t_dict *ft_create_nodo(t_dict *prev)
         nodo->next = NULL;
         return (nodo);
 }
-//Si ft_create_nodo devuelve NULL, el código fallará? 
-//Debe verificarse antes de acceder a list->uni, list->dec, list->cen.
+//Si ft_create_nodo devuelve NULL, el código fallará? --- Sí
+//Debe verificarse antes de acceder a list->uni, list->dec, list->cen.  ----Corregido, Bien visto
 t_list *creatematrix(char *str)
 {
 	int i;
@@ -88,13 +90,16 @@ t_list *creatematrix(char *str)
 	}
 	return (list);
 }
-#include <stdio.h>
+#include <stdio.h> // ------ ¿Nos hace falta?
 // va a transformar un char en int, si es que hay.
 // elimina los espacios
 // cuenta los "-" para ver si es negativo
 // convierte los char que hay entre '0' y '9' en enteros.
 // en ASCII, el '0' = 48. Al restar el char que hay en el str, nos da el mismo número ya en int.
 // finalmente, le sumamos lo que hay a la izquierda (almacenado en result).
+// --- Cambio la manera de iterar para usar índices y
+// --- elimino el tratamiento de espacios y signos y lo añado, en este programa
+// --- solo pueden darnos números enteros sin signos. Por lo demás, ¡Buen trabajo!
 int	ft_my_atoi(const char *str)
 {
 	int	result;
@@ -123,7 +128,10 @@ int	ft_my_atoi(const char *str)
 	}
 	return (result * sign);
 }
-
+// --- Hay que establecer por separado 
+// --- la impresión de las centenas, decenas, unidades y los múltiplos de mil, 
+// --- ya que nunca vamos a encontrar el número exacto, 
+// --- sino las partes de las que se forma, añado esta modificación. ¡Bien intentado!
 void	print_nodo(t_dict *dict, t_list *list, int i)
 {
 	int number;
