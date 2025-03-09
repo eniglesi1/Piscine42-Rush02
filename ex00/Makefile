@@ -1,19 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Makefile                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marinoal <marinoal@student.42madrid.c      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/09 18:56:05 by marinoal          #+#    #+#             */
-/*   Updated: 2025/03/09 19:20:13 by marinoal         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jota <jota@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/09 22:46:10 by jota              #+#    #+#              #
+#    Updated: 2025/03/09 22:46:10 by jota             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = rush02
 
-SRC = 	utils.c utils2.c 
-
+SRC = rush02.c
 OBJS = $(SRC:.c=.o)
 HEADERS = rush02.h
 CFLAGS = -Wall -Wextra -Werror
@@ -21,23 +20,20 @@ CFLAGS = -Wall -Wextra -Werror
 NORM := norminette
 NORM_FLAGS := -R CheckForbiddenSourceHeader -R CheckDefine
 
-.PHONY: all
+.PHONY: all clean fclean re
+
 all: $(NAME)
 
-$(NAME): $(OBJS) 
-	ar -crs $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c %.h
-	@$(NORM) $(NORM_FLAGS) $^
-	$(CC) $(FLAGS) -c $< -o $@
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: clean
 clean:
 	rm -f $(OBJS)
 
-.PHONY: fclean
 fclean: clean
 	rm -f $(NAME)
 
-.PHONY: re	
 re: fclean all
